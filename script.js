@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hero Animations
     const heroTitle = document.getElementById('hero-title');
     const heroSubtitle = document.getElementById('hero-subtitle');
-    const heroBadge = document.getElementById('hero-badge');
 
     // Typing Effect for Hero Subtitle
     const typingText = "데이터와 논리로 장비의 가동률을 극대화하는\n준비된 Physical AI 엔지니어";
@@ -33,12 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 700);
 
-    setTimeout(() => {
-        if (heroBadge) {
-            heroBadge.style.opacity = '1';
-            heroBadge.style.transform = 'translateY(0)';
-        }
-    }, 1000);
 
     // Reveal on Scroll
     const reveals = document.querySelectorAll('.reveal');
@@ -159,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="post-content">${post.content}</div>
                 <div class="post-actions">
+                    <button class="like-btn" onclick="likePost('${post.id}')"><i class="fa-solid fa-heart"></i> 추천 <span class="like-count">${post.likes || 0}</span></button>
                     <button class="edit-btn" onclick="editPost('${post.id}')"><i class="fa-solid fa-edit"></i> 수정</button>
                     <button class="delete-btn" onclick="deletePost('${post.id}')"><i class="fa-solid fa-trash"></i> 삭제</button>
                 </div>
@@ -173,6 +167,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (confirm('정말 이 게시글을 삭제하시겠습니까?')) {
             let posts = JSON.parse(localStorage.getItem('amk_board_posts') || '[]');
             posts = posts.filter(p => p.id !== id);
+            localStorage.setItem('amk_board_posts', JSON.stringify(posts));
+            loadPosts();
+        }
+    };
+
+    window.likePost = (id) => {
+        let posts = JSON.parse(localStorage.getItem('amk_board_posts') || '[]');
+        const index = posts.findIndex(p => p.id === id);
+        if (index !== -1) {
+            posts[index].likes = (posts[index].likes || 0) + 1;
             localStorage.setItem('amk_board_posts', JSON.stringify(posts));
             loadPosts();
         }
@@ -197,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 // Add new
-                posts.push({ id, name, email, content, date });
+                posts.push({ id, name, email, content, date, likes: 0 });
             }
 
             localStorage.setItem('amk_board_posts', JSON.stringify(posts));

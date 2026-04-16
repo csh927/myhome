@@ -118,6 +118,42 @@ nav.scrolled {
     width: 100%;
 }
 
+/* Hero Curriculum Styles */
+.hero-courses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    max-width: 1000px;
+}
+
+.h-course {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    transition: var(--transition);
+}
+
+.h-course:hover {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    color: var(--primary);
+}
+
+.n-tag {
+    color: #ff4757;
+    font-weight: 800;
+    font-size: 0.7rem;
+    margin-right: 4px;
+}
+
 /* Sections */
 section {
     padding: 100px 10%;
@@ -172,6 +208,11 @@ section {
     color: var(--primary);
     font-size: 1.3rem;
     width: 25px;
+}
+
+.contact-item a:hover {
+    color: var(--primary);
+    text-decoration: underline !important;
 }
 
 /* Simple Form in Profile */
@@ -362,22 +403,6 @@ section {
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.hero-highlight {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    color: white;
-    padding: 0.8rem 2.5rem;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    display: inline-block;
-    font-weight: 700;
-    margin-top: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
 
 /* Reveal Animation (Simplified) */
 .reveal {
@@ -602,6 +627,34 @@ section {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--dark-grey);
+}
+
+.like-btn {
+    padding: 0.4rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    background: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.2);
+    color: #ff4757;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.like-btn:hover {
+    background: rgba(255, 71, 87, 0.2);
+    transform: scale(1.05);
+}
+
+.like-count {
+    background: #ff4757;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
 }
 
 .edit-btn:hover {

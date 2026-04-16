@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="bg-blob" id="blob1"></div>
     <div class="bg-blob" id="blob2"></div>
@@ -21,13 +23,13 @@
             <span class="logo-text">PORTFOLIO</span>
         </div>
         <div class="nav-links">
-            <a href="#hero" class="nav-item">Identity</a>
-            <a href="#profile" class="nav-item">Profile</a>
-            <a href="#hard-skills" class="nav-item">Hard Skills</a>
-            <a href="#digital" class="nav-item">Digital Solutions</a>
-            <a href="#specialty" class="nav-item">Specialty</a>
-            <a href="#board" class="nav-item">Board</a>
-            <a href="#contact" class="nav-item">Contact</a>
+            <a href="#hero" class="nav-item">아이덴티티</a>
+            <a href="#profile" class="nav-item">프로필</a>
+            <a href="#hard-skills" class="nav-item">하드 스킬</a>
+            <a href="#digital" class="nav-item">디지털 솔루션</a>
+            <a href="#specialty" class="nav-item">실무 경험</a>
+            <a href="#board" class="nav-item">게시판</a>
+            <a href="#contact" class="nav-item">연락처</a>
         </div>
         <div class="nav-toggle" id="nav-toggle">
             <span></span>
@@ -48,7 +50,15 @@
         <div class="hero-content">
             <h1 id="hero-title">READY TO DRIVE<br>PRECISION.</h1>
             <p class="hero-subtitle" id="hero-subtitle">데이터와 논리로 장비의 가동률을 극대화하는<br>준비된 Physical AI 엔지니어</p>
-            <div class="hero-highlight" id="hero-badge">BEST EQUIPMENT TECHNICIAN CANDIDATE</div>
+
+            <!-- Integrated Curriculum -->
+            <div class="hero-courses">
+                <div class="h-course">윈도우프로그래밍 (황일규)</div>
+                <div class="h-course">웹프로그래밍 <span class="n-tag">NEW</span> (황우현)</div>
+                <div class="h-course">PLC프로그래밍 <span class="n-tag">NEW</span> (김학성)</div>
+                <div class="h-course">마이크로컨트롤러 (김재원)</div>
+                <div class="h-course">인공지능개론 (이중철)</div>
+            </div>
         </div>
     </section>
 
@@ -88,14 +98,16 @@
     <section id="hard-skills" class="reveal">
         <h2 class="gradient-text">Hard Skills: Precision Control</h2>
         <p style="text-align: center;">PLC 및 임베디드 설계를 통한 실무 트러블슈팅 역량</p>
-        
+
         <div class="grid-container">
             <div class="skill-card" onclick="openModal('plc')">
                 <i class="fa-solid fa-microchip" style="color: var(--primary);"></i>
                 <span class="tag">PLC & Electrical Theory</span>
                 <h3>전기 이론 기반 장비 시퀀스 제어</h3>
                 <p>전기 이론 및 실험을 통한 회로 해석력과 PLC 프로그래밍을 결합하여, 장비의 하드웨어와 소프트웨어를 동시에 트러블슈팅하는 통합 엔지니어링 역량.</p>
-                <div class="progress-container"><div class="progress-bar" style="width: 95%;"></div></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 95%;"></div>
+                </div>
                 <small>Click to see Case Study →</small>
             </div>
             <div class="skill-card" onclick="openModal('web')">
@@ -103,7 +115,9 @@
                 <span class="tag">Web Programming</span>
                 <h3>실시간 장비 모니터링 HMI 웹</h3>
                 <p>HTML5/JavaScript 기반 웹 프로그래밍 지식을 활용하여 장비의 상태(온도, 압력 등)를 실시간 시각화하고 유지보수 이력을 관리하는 모바일 대시보드 구축.</p>
-                <div class="progress-container"><div class="progress-bar" style="width: 85%;"></div></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 85%;"></div>
+                </div>
                 <small>Click to see Case Study →</small>
             </div>
         </div>
@@ -122,7 +136,9 @@
                 <span class="tag">C# Automation</span>
                 <h3>64비트 고정밀 물리 연산</h3>
                 <p>double형 데이터를 활용한 오차 최소화 설계로 반도체 공정 정밀도 보장.</p>
-                <div class="progress-container"><div class="progress-bar" style="width: 98%;"></div></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 98%;"></div>
+                </div>
                 <small>Click to see TAR Case →</small>
             </div>
             <div class="skill-card" onclick="openModal('ai')">
@@ -133,7 +149,9 @@
                 <span class="tag">AI Introduction</span>
                 <h3>인공지능 개론 기반 PdM 설계</h3>
                 <p>머신러닝 알고리즘 지식을 바탕으로 장비 로그 데이터를 전처리하고, TensorFlow 모델을 통해 부품 고장 시점을 예측하는 예견 유지보수 솔루션 제안.</p>
-                <div class="progress-container"><div class="progress-bar" style="width: 92%;"></div></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 92%;"></div>
+                </div>
                 <small>Click to see Case Study →</small>
             </div>
             <div class="skill-card" onclick="openModal('design')">
@@ -141,7 +159,9 @@
                 <span class="tag">Creative Engineering Design</span>
                 <h3>TRIZ 기반 문제 해결 아키텍처</h3>
                 <p>창의적 공학설계 과목에서 습득한 TRIZ(모순 해결 원리)를 적용하여 장비 구조적 결함의 근본 원인을 분석하고 논리적인 개선안을 도출하는 역량.</p>
-                <div class="progress-container"><div class="progress-bar" style="width: 94%;"></div></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 94%;"></div>
+                </div>
                 <small>Click to see Case Study →</small>
             </div>
         </div>
@@ -151,7 +171,7 @@
         <h2 class="gradient-text">Specialty: Semiconductor Experience</h2>
         <div class="grid-container" style="grid-template-columns: 1fr 1.5fr;">
             <div class="cert-img" style="border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);">
-                <img src="assets/certificate.png" alt="Bootcamp Certificate" style="width: 100%; display: block;">
+                <img src="assets/project_hero.png" alt="Semiconductor Equipment" style="width: 100%; display: block;">
             </div>
             <div class="skill-card">
                 <h3>동양미래대학교 반도체 부트캠프</h3>
@@ -175,7 +195,7 @@
                 <a href="#hero" class="nav-home-btn"><i class="fa-solid fa-house"></i> 홈으로</a>
             </div>
         </div>
-        
+
         <div class="board-container">
             <!-- List View (Default) -->
             <div id="board-list-container">
@@ -225,6 +245,15 @@
                         <i class="fa-solid fa-phone"></i>
                         <span>010-1234-9876</span>
                     </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-github"></i>
+                        <a href="https://github.com" target="_blank"
+                            style="color: inherit; text-decoration: none;">github.com/hyeok-dev</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <a href="#" style="color: inherit; text-decoration: none;">linkedin.com/in/hyeok</a>
+                    </div>
                 </div>
             </div>
             <div class="profile-form">
@@ -250,10 +279,10 @@
             <div class="tar-grid">
                 <div class="tar-label">TROUBLE</div>
                 <div id="tarTrouble">Issue description...</div>
-                
+
                 <div class="tar-label">ACTION</div>
                 <div id="tarAction">Action taken...</div>
-                
+
                 <div class="tar-label">RESULT</div>
                 <div id="tarResult">Final outcome...</div>
             </div>
@@ -262,4 +291,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
