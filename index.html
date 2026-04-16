@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMK Equipment Technician Portfolio | Ready for Precision</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-blob" id="blob1"></div>
+    <div class="bg-blob" id="blob2"></div>
+    <div class="particles" id="particles"></div>
+
+    <nav id="main-nav">
+        <div class="logo">
+            <span class="logo-accent">AMK</span>
+            <span class="logo-text">PORTFOLIO</span>
+        </div>
+        <div class="nav-links">
+            <a href="#hero" class="nav-item">Identity</a>
+            <a href="#profile" class="nav-item">Profile</a>
+            <a href="#hard-skills" class="nav-item">Hard Skills</a>
+            <a href="#digital" class="nav-item">Digital Solutions</a>
+            <a href="#specialty" class="nav-item">Specialty</a>
+            <a href="#board" class="nav-item">Board</a>
+            <a href="#contact" class="nav-item">Contact</a>
+        </div>
+        <div class="nav-toggle" id="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <!-- Physical AI HUD Overlay -->
+        <div class="tech-hud">
+            <span class="hud-item hud-tl">[NEURAL_PROCESSOR: ACTIVE]</span>
+            <span class="hud-item hud-tr">PRECISION_RATE: 99.98%</span>
+            <span class="hud-item hud-bl">CORE_AI_SYNC: STABLE</span>
+            <span class="hud-item hud-br">MAINTENANCE_MODE: PREDICTIVE</span>
+        </div>
+
+        <div class="hero-content">
+            <h1 id="hero-title">READY TO DRIVE<br>PRECISION.</h1>
+            <p class="hero-subtitle" id="hero-subtitle">데이터와 논리로 장비의 가동률을 극대화하는<br>준비된 Physical AI 엔지니어</p>
+            <div class="hero-highlight" id="hero-badge">BEST EQUIPMENT TECHNICIAN CANDIDATE</div>
+        </div>
+    </section>
+
+    <section id="profile" class="reveal">
+        <div class="profile-layout">
+            <div class="profile-info">
+                <h2 class="profile-title">Vision & Philosophy</h2>
+                <p class="profile-desc">장비의 데이터가 기술자의 감각과 만날 때 공정의 완벽함이 완성됩니다.</p>
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <i class="fa-solid fa-microscope"></i>
+                        <h4>Precision First</h4>
+                        <p>0.001mm의 오차도 허용하지 않는 정밀 분석 역량</p>
+                    </div>
+                    <div class="vision-card">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h4>Proactive Action</h4>
+                        <p>고장 발생 전 징후를 파착하는 예견 유지보수 실현</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-visual">
+                <!-- Visual element instead of a form -->
+                <div class="id-card">
+                    <div class="id-header">ENGINEER IDENTITY</div>
+                    <div class="id-body">
+                        <div class="id-name">Hyeok</div>
+                        <div class="id-role">Equipment Technician</div>
+                        <div class="id-status">STATUS: READY TO DEPLOY</div>
+                    </div>
+                    <div class="id-code">#AMK_PRO_2026</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hard-skills" class="reveal">
+        <h2 class="gradient-text">Hard Skills: Precision Control</h2>
+        <p style="text-align: center;">PLC 및 임베디드 설계를 통한 실무 트러블슈팅 역량</p>
+        
+        <div class="grid-container">
+            <div class="skill-card" onclick="openModal('plc')">
+                <i class="fa-solid fa-microchip" style="color: var(--primary);"></i>
+                <span class="tag">PLC & Electrical Theory</span>
+                <h3>전기 이론 기반 장비 시퀀스 제어</h3>
+                <p>전기 이론 및 실험을 통한 회로 해석력과 PLC 프로그래밍을 결합하여, 장비의 하드웨어와 소프트웨어를 동시에 트러블슈팅하는 통합 엔지니어링 역량.</p>
+                <div class="progress-container"><div class="progress-bar" style="width: 95%;"></div></div>
+                <small>Click to see Case Study →</small>
+            </div>
+            <div class="skill-card" onclick="openModal('web')">
+                <i class="fa-solid fa-globe" style="color: var(--primary);"></i>
+                <span class="tag">Web Programming</span>
+                <h3>실시간 장비 모니터링 HMI 웹</h3>
+                <p>HTML5/JavaScript 기반 웹 프로그래밍 지식을 활용하여 장비의 상태(온도, 압력 등)를 실시간 시각화하고 유지보수 이력을 관리하는 모바일 대시보드 구축.</p>
+                <div class="progress-container"><div class="progress-bar" style="width: 85%;"></div></div>
+                <small>Click to see Case Study →</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="digital" class="reveal">
+        <h2 class="gradient-text">Digital Solution: Smart Maintenance</h2>
+        <p style="text-align: center;">C# 자동화 및 AI 기반 예견 유지보수</p>
+
+        <div class="grid-container">
+            <div class="skill-card" onclick="openModal('csharp')">
+                <div class="digital-preview">
+                    <img src="assets/ai_preview.png" alt="C# Logic">
+                </div>
+                <i class="fa-solid fa-code" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                <span class="tag">C# Automation</span>
+                <h3>64비트 고정밀 물리 연산</h3>
+                <p>double형 데이터를 활용한 오차 최소화 설계로 반도체 공정 정밀도 보장.</p>
+                <div class="progress-container"><div class="progress-bar" style="width: 98%;"></div></div>
+                <small>Click to see TAR Case →</small>
+            </div>
+            <div class="skill-card" onclick="openModal('ai')">
+                <div class="digital-preview">
+                    <img src="assets/ai_preview.png" alt="AI Model">
+                </div>
+                <i class="fa-solid fa-brain" style="color: var(--primary);"></i>
+                <span class="tag">AI Introduction</span>
+                <h3>인공지능 개론 기반 PdM 설계</h3>
+                <p>머신러닝 알고리즘 지식을 바탕으로 장비 로그 데이터를 전처리하고, TensorFlow 모델을 통해 부품 고장 시점을 예측하는 예견 유지보수 솔루션 제안.</p>
+                <div class="progress-container"><div class="progress-bar" style="width: 92%;"></div></div>
+                <small>Click to see Case Study →</small>
+            </div>
+            <div class="skill-card" onclick="openModal('design')">
+                <i class="fa-solid fa-lightbulb" style="color: var(--primary);"></i>
+                <span class="tag">Creative Engineering Design</span>
+                <h3>TRIZ 기반 문제 해결 아키텍처</h3>
+                <p>창의적 공학설계 과목에서 습득한 TRIZ(모순 해결 원리)를 적용하여 장비 구조적 결함의 근본 원인을 분석하고 논리적인 개선안을 도출하는 역량.</p>
+                <div class="progress-container"><div class="progress-bar" style="width: 94%;"></div></div>
+                <small>Click to see Case Study →</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="specialty" class="reveal">
+        <h2 class="gradient-text">Specialty: Semiconductor Experience</h2>
+        <div class="grid-container" style="grid-template-columns: 1fr 1.5fr;">
+            <div class="cert-img" style="border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);">
+                <img src="assets/certificate.png" alt="Bootcamp Certificate" style="width: 100%; display: block;">
+            </div>
+            <div class="skill-card">
+                <h3>동양미래대학교 반도체 부트캠프</h3>
+                <p>몰입형 PLC 및 장비 S/W 실무 과정 완수. 증착(Deposition) & 식각(Etch) 장비 원리 및 데이터 운용 경험.</p>
+                <div style="margin-top: 1rem; color: var(--primary); font-weight: 700;">"현장 즉시 투입 가능한 실무 감각 배양"</div>
+                <ul style="margin-top: 1rem; font-size: 0.85rem; color: #b1b1b1; padding-left: 1.2rem;">
+                    <li>장비 에러 발생 시 프로그램 편집을 통한 복구 실습</li>
+                    <li>반도체 장비 S/W 아키텍처 이해</li>
+                    <li>공정 데이터 표준화 및 분석 프로젝트</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="board" class="reveal">
+        <div class="board-header">
+            <h2 class="gradient-text">자유 게시판</h2>
+            <p>자유롭게 문의사항이나 요청사항을 남겨주세요.</p>
+            <div class="board-controls">
+                <button id="write-btn" class="action-btn"><i class="fa-solid fa-pen"></i> 글쓰기</button>
+                <a href="#hero" class="nav-home-btn"><i class="fa-solid fa-house"></i> 홈으로</a>
+            </div>
+        </div>
+        
+        <div class="board-container">
+            <!-- List View (Default) -->
+            <div id="board-list-container">
+                <div id="board-list" class="board-list">
+                    <!-- Posts will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Form View (Hidden by default) -->
+            <div id="board-form-container" style="display: none;">
+                <form id="board-form" class="glass-form">
+                    <input type="hidden" id="post-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="board-name">이름</label>
+                            <input type="text" id="board-name" required placeholder="홍길동">
+                        </div>
+                        <div class="form-group">
+                            <label for="board-email">이메일</label>
+                            <input type="email" id="board-email" required placeholder="example@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="board-content">내용</label>
+                        <textarea id="board-content" required placeholder="내용을 입력해주세요..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="form-submit-btn" class="submit-btn">게시글 등록</button>
+                        <button type="button" id="cancel-btn" class="cancel-btn">취소</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <div class="profile-layout">
+            <div class="profile-info">
+                <h2 class="profile-title">Ready to Innovate Together?</h2>
+                <p class="profile-desc">AMK의 미래 지향적 가치에 기여할 준비가 되었습니다.</p>
+                <div class="profile-contact">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>hyeokclss061113@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>010-1234-9876</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-form">
+                <form id="contact-form" class="simple-form">
+                    <input type="text" id="name" name="name" placeholder="이름" required>
+                    <input type="email" id="email" name="email" placeholder="이메일" required>
+                    <textarea id="message" name="message" placeholder="메시지를 남겨주세요" required></textarea>
+                    <button type="submit" class="send-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 PRECISION EQUIPMENT TECHNICIAN PORTFOLIO | INSPIRED BY APPLIED MATERIALS KOREA
+    </footer>
+
+    <!-- TAR Modal -->
+    <div id="tarModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" class="gradient-text">Case Title</h3>
+            <div class="tar-grid">
+                <div class="tar-label">TROUBLE</div>
+                <div id="tarTrouble">Issue description...</div>
+                
+                <div class="tar-label">ACTION</div>
+                <div id="tarAction">Action taken...</div>
+                
+                <div class="tar-label">RESULT</div>
+                <div id="tarResult">Final outcome...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
