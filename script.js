@@ -1,3 +1,16 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyD4o8wtRVExlbZMvHVuH88n8VgI3IViJOw",
+    authDomain: "website-3fc2a.firebaseapp.com",
+    projectId: "website-3fc2a",
+    storageBucket: "website-3fc2a.firebasestorage.app",
+    messagingSenderId: "883799392118",
+    appId: "1:883799392118:web:bea9e07d7acde6e582c457"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Hero Animations
     const heroTitle = document.getElementById('hero-title');
@@ -107,13 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
         boardListContainer.style.display = 'none';
         boardFormContainer.style.display = 'block';
         if (postId !== null) {
-            const posts = JSON.parse(localStorage.getItem('amk_board_posts') || '[]');
-            const post = posts.find(p => p.id === postId);
-            if (post) {
-                postIdInput.value = post.id;
-                document.getElementById('board-name').value = post.name;
-                document.getElementById('board-email').value = post.email;
-                document.getElementById('board-content').value = post.content;
+            const postEl = document.querySelector(`[data-id="${postId}"]`);
+            if (postEl) {
+                const name = postEl.querySelector('.post-author').innerText;
+                const content = postEl.querySelector('.post-content').innerText;
+                const email = postEl.getAttribute('data-email');
+                
+                postIdInput.value = postId;
+                document.getElementById('board-name').value = name;
+                document.getElementById('board-email').value = email;
+                document.getElementById('board-content').value = content;
                 formSubmitBtn.innerText = '수정 완료';
             }
         } else {
@@ -132,95 +148,93 @@ document.addEventListener('DOMContentLoaded', () => {
     writeBtn.addEventListener('click', () => showForm());
     cancelBtn.addEventListener('click', () => showList());
 
-    // Load posts from localStorage
+    // Load posts from Firestore
     function loadPosts() {
-        let posts = JSON.parse(localStorage.getItem('amk_board_posts') || '[]');
-        
-        // Add sample posts if list is empty
-        if (posts.length === 0) {
-            const samples = [
-                { id: '1', name: '김철수', email: 'chulsoo@example.com', content: '안녕하세요. AMK 장비 기술자 포트폴리오 정말 대단하네요. 특히 PLC 제어 부분에서 실무 역량이 돋보입니다.', date: '2026. 4. 16. 오후 12:00:00', likes: 5 },
-                { id: '2', name: '이영희', email: 'younghee@example.com', content: '웹 HMI 대시보드 구현 사례가 인상 깊습니다. 데이터 시각화를 통해 유지보수 효율을 높이는 접근 방식이 매우 혁신적입니다.', date: '2026. 4. 15. 오전 10:30:00', likes: 12 },
-                { id: '3', name: '박지민', email: 'jimin@example.com', content: '반도체 부트캠프 경험이 부럽네요! 실제 장비 에러 복구 실습은 현장에서 정말 큰 도움이 될 것 같습니다.', date: '2026. 4. 14. 오후 2:15:00', likes: 8 },
-                { id: '4', name: '최유진', email: 'yujin@example.com', content: 'C#을 활용한 64비트 정밀 오차 제어 로직에 대해 더 자세히 알고 싶습니다. 기술 공유가 가능한가요?', date: '2026. 4. 13. 오전 11:20:00', likes: 3 },
-                { id: '5', name: '정우성', email: 'woosung@example.com', content: 'TRIZ를 활용한 문제 해결 아키텍처가 독특하네요. 논리적인 접근 방식이 엔지니어로서의 강점인 것 같습니다.', date: '2026. 4. 12. 오후 4:45:00', likes: 7 },
-                { id: '6', name: '강석호', email: 'sukho@example.com', content: 'AMK의 미래 지향적인 가치와 잘 어울리는 포트폴리오입니다. 멋진 성장을 응원합니다!', date: '2026. 4. 11. 오전 09:00:00', likes: 4 },
-                { id: '7', name: '윤아름', email: 'areum@example.com', content: '실무 경험 섹션의 이미지가 실제 작업 현장 느낌이 나서 신뢰가 가네요. 기술자의 열정이 느껴집니다.', date: '2026. 4. 10. 오후 01:30:00', likes: 6 },
-                { id: '8', name: '임재범', email: 'jaebum@example.com', content: '장비 가동률 극대화를 위한 데이터 분석 역량이 매우 훌륭합니다. 현업에서 꼭 필요한 인재라고 생각됩니다.', date: '2026. 4. 09. 오전 11:10:00', likes: 9 },
-                { id: '9', name: '한소희', email: 'sohee@example.com', content: '전체적인 디자인 테마가 깔끔하고 전문적입니다. 다크 모드와 시안 색상 조합이 인상적이네요.', date: '2026. 4. 08. 오후 05:20:00', likes: 11 },
-                { id: '10', name: '홍길동', email: 'gildong@example.com', content: '좋은 정보 감사합니다. 저도 장비 제어 분야를 공부 중인데 많은 영감을 받았습니다.', date: '2026. 4. 07. 오전 10:00:00', likes: 2 }
-            ];
-            localStorage.setItem('amk_board_posts', JSON.stringify(samples));
-            posts = samples;
-        }
-
-        boardList.innerHTML = '';
-
-        posts.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(post => {
-            const postCard = document.createElement('div');
-            postCard.className = 'post-card';
-            postCard.innerHTML = `
-                <div class="post-header">
-                    <span class="post-author">${post.name}</span>
-                    <span class="post-content">${post.content}</span>
-                    <span class="post-date">${post.date}</span>
-                </div>
-                <div class="post-actions">
-                    <button class="like-btn" onclick="likePost('${post.id}')"><i class="fa-solid fa-heart"></i> 추천 <span class="like-count">${post.likes || 0}</span></button>
-                    <button class="edit-btn" onclick="editPost('${post.id}')"><i class="fa-solid fa-edit"></i> 수정</button>
-                    <button class="delete-btn" onclick="deletePost('${post.id}')"><i class="fa-solid fa-trash"></i> 삭제</button>
-                </div>
-            `;
-            boardList.appendChild(postCard);
+        db.collection("posts").orderBy("date", "desc").onSnapshot((querySnapshot) => {
+            boardList.innerHTML = '';
+            querySnapshot.forEach((doc) => {
+                const post = doc.data();
+                const id = doc.id;
+                const postDate = post.date ? post.date.toDate().toLocaleString('ko-KR') : '방금 전';
+                
+                const postCard = document.createElement('div');
+                postCard.className = 'post-card';
+                postCard.setAttribute('data-id', id);
+                postCard.setAttribute('data-email', post.email || '');
+                postCard.innerHTML = `
+                    <div class="post-header">
+                        <span class="post-author">${post.name}</span>
+                        <span class="post-content">${post.content}</span>
+                        <div class="post-meta">
+                            <span class="post-date">${postDate}</span>
+                            <span class="stored-badge"><i class="fa-solid fa-cloud-check"></i> DB 저장됨 <i class="fa-solid fa-circle-check"></i></span>
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <button class="like-btn" onclick="likePost('${id}')"><i class="fa-solid fa-heart"></i> 추천 <span class="like-count">${post.likes || 0}</span></button>
+                        <button class="edit-btn" onclick="editPost('${id}')"><i class="fa-solid fa-edit"></i> 수정</button>
+                        <button class="delete-btn" onclick="deletePost('${id}')"><i class="fa-solid fa-trash"></i> 삭제</button>
+                    </div>
+                `;
+                boardList.appendChild(postCard);
+            });
         });
     }
 
     window.editPost = (id) => showForm(id);
 
-    window.deletePost = (id) => {
+    window.deletePost = async (id) => {
         if (confirm('정말 이 게시글을 삭제하시겠습니까?')) {
-            let posts = JSON.parse(localStorage.getItem('amk_board_posts') || '[]');
-            posts = posts.filter(p => p.id !== id);
-            localStorage.setItem('amk_board_posts', JSON.stringify(posts));
-            loadPosts();
+            try {
+                await db.collection("posts").doc(id).delete();
+            } catch (error) {
+                console.error("Error deleting document: ", error);
+                alert("삭제 중 오류가 발생했습니다.");
+            }
         }
     };
 
-    window.likePost = (id) => {
-        let posts = JSON.parse(localStorage.getItem('amk_board_posts') || '[]');
-        const index = posts.findIndex(p => p.id === id);
-        if (index !== -1) {
-            posts[index].likes = (posts[index].likes || 0) + 1;
-            localStorage.setItem('amk_board_posts', JSON.stringify(posts));
-            loadPosts();
+    window.likePost = async (id) => {
+        try {
+            await db.collection("posts").doc(id).update({
+                likes: firebase.firestore.FieldValue.increment(1)
+            });
+        } catch (error) {
+            console.error("Error updating likes: ", error);
         }
     };
 
     if (boardForm) {
-        boardForm.addEventListener('submit', (e) => {
+        boardForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const id = postIdInput.value || Date.now().toString();
+            const id = postIdInput.value;
             const name = document.getElementById('board-name').value;
             const email = document.getElementById('board-email').value;
             const content = document.getElementById('board-content').value;
-            const date = new Date().toLocaleString('ko-KR');
 
-            let posts = JSON.parse(localStorage.getItem('amk_board_posts') || '[]');
-            
-            if (postIdInput.value) {
-                // Update existing
-                const index = posts.findIndex(p => p.id === id);
-                if (index !== -1) {
-                    posts[index] = { ...posts[index], name, email, content, date: date + ' (수정됨)' };
+            try {
+                if (id) {
+                    await db.collection("posts").doc(id).update({
+                        name,
+                        email,
+                        content,
+                        date: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } else {
+                    await db.collection("posts").add({
+                        name,
+                        email,
+                        content,
+                        date: firebase.firestore.FieldValue.serverTimestamp(),
+                        likes: 0
+                    });
                 }
-            } else {
-                // Add new
-                posts.push({ id, name, email, content, date, likes: 0 });
+                alert(id ? '게시글이 수정되었습니다.' : '게시글이 등록되었습니다.');
+                showList();
+            } catch (error) {
+                console.error("Error saving document: ", error);
+                alert("저장 중 오류가 발생했습니다: " + error.message);
             }
-
-            localStorage.setItem('amk_board_posts', JSON.stringify(posts));
-            alert(postIdInput.value ? '게시글이 수정되었습니다.' : '게시글이 등록되었습니다.');
-            showList();
         });
     }
 
@@ -261,7 +275,7 @@ const tarData = {
     }
 };
 
-function openModal(key) {
+window.openModal = function(key) {
     const data = tarData[key];
     const titleEl = document.getElementById('modalTitle');
     const troubleEl = document.getElementById('tarTrouble');
@@ -277,7 +291,7 @@ function openModal(key) {
     if (modal) modal.style.display = 'flex';
 }
 
-function closeModal() {
+window.closeModal = function() {
     const modal = document.getElementById('tarModal');
     if (modal) modal.style.display = 'none';
 }

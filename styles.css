@@ -816,10 +816,35 @@ section {
     text-overflow: ellipsis;
 }
 
+.post-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
 .post-date {
     font-size: 0.8rem;
     color: var(--dark-grey);
     text-align: right;
+}
+
+.stored-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #4cd137;
+    background: rgba(76, 209, 55, 0.1);
+    padding: 3px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(76, 209, 55, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: 0.5px;
+}
+
+.stored-badge i {
+    font-size: 0.8rem;
 }
 
 .post-content {
@@ -856,9 +881,12 @@ section {
         align-items: flex-start;
         padding: 1.5rem;
     }
+    .post-meta {
+        align-items: flex-start;
+        margin-top: 0.5rem;
+    }
     .post-date {
         text-align: left;
-        margin-top: 0.3rem;
     }
     .post-content {
         white-space: normal;
